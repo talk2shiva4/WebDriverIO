@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wdio-tests
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wdio-tests
+  template:
+    metadata:
+      labels:
+        app: wdio-tests
+    spec:
+      containers:
+      - name: wdio
+        image: <your-docker-image>
+        command: ["npm", "test"]
